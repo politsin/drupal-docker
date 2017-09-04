@@ -15,7 +15,7 @@ services:
       - "/opt/docker4drupal/nginx/default:/etc/nginx/default:ro"
       - "/opt/docker4drupal/nginx/vhosts:/etc/nginx/vhosts:ro"
       - "/opt/docker4drupal/nginx/default/www:/var/www/html:ro"
-      - "/opt/docker4drupal/sites:/opt/docker4drupal/sites:rw"
+      - "/opt/docker4drupal/sites:/opt/sites:rw"
   default-php:
     image: synst/php7
     container_name: phpfpm-0-default
