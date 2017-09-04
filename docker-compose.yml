@@ -1,0 +1,55 @@
+version: "2"
+
+services:
+  nginx:
+    image: synst/nginx:1.11.7
+    container_name: nginx
+    hostname: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/opt/docker4drupal/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "/opt/docker4drupal/nginx/includes:/etc/nginx/includes:ro"
+      - "/opt/docker4drupal/nginx/default:/etc/nginx/default:ro"
+      - "/opt/docker4drupal/nginx/vhosts:/etc/nginx/vhosts:ro"
+      - "/opt/docker4drupal/nginx/default/www:/var/www/html:ro"
+      - "/opt/docker4drupal/sites:/opt/docker4drupal/sites:rw"
+  default-php:
+    image: synst/php7
+    container_name: phpfpm-0-default
+    hostname: phpfpm-0-default
+    restart: always
+    ports:
+      - "2022:22"
+    volumes:
+      - "/opt/docker4drupal/sites/0-default/etc/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/php/php.ini:/etc/php/7.0/fpm/php.ini:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/php/mods-available/opcache.ini:/etc/php/7.0/mods-available/opcache.ini:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/start.sh:/start.sh:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/supervisor/supervisord.conf:/etc/supervisord.conf:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro"
+      - "/opt/docker4drupal/sites/0-default/etc/crontabs:/var/spool/cron/crontabs:rw"
+      - "/opt/docker4drupal/sites/0-default/root/.ssh:/root/.ssh:ro"
+      - "/opt/docker4drupal/sites/0-default/root/.bash_profile:/root/.bash_profile:rw"
+      - "/opt/docker4drupal/sites/0-default/root/.bashrc:/root/.bashrc:rw"
+      - "/opt/docker4drupal/sites/0-default/www-home:/var/www:rw"
+      - "/opt/docker4drupal/sites/0-default/run/php:/run/php:rw"
+      - "/opt/docker4drupal/sites/0-default/run/mysqld:/var/run/mysqld:rw"
+  default-mysql:
+    image: mysql:5.6
+    container_name: mysql-0-default
+    hostname: mysql-0-default
+    restart: always
+    command: ["mysqld", "--character-set-server=utf8", "--collation-server=utf8_general_ci"]
+    environment:
+      - MYSQL_DATABASE=drupal
+      - MYSQL_USER=drupal
+      - MYSQL_PASSWORD=drupal
+      - MYSQL_ROOT_PASSWORD=MyDbRootPass
+    volumes:
+    - "/opt/docker4drupal/sites/0-default/etc/mysql/my.cnf:/etc/mysql/my.cnf"
+    - "/opt/docker4drupal/sites/0-default/db:/var/lib/mysql"
+    - "/opt/docker4drupal/sites/0-default/run/mysqld:/var/run/mysqld:rw"
