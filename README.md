@@ -1,5 +1,10 @@
 # docker4drupal
 
+## Если у вас линукс и установленны docker и docker-compose
+ * клонируем git clone https://github.com/politsin/docker4drupal && cd docker4drupal
+ * запускаем docker-compose up -d
+
+# Старое описание, пусть тут полежит пока
 ## 1. Скачаем файлы в /opt/docker4drupal
  * Команды в консоли: https://github.com/politsin/docker4drupal/blob/master/get.sh
 
