@@ -9,11 +9,11 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "assets/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
-      - "assets/etc/nginx/includes:/etc/nginx/includes:ro"
-      - "assets/run:/run/php:rw"
-      - "assets/www-home:/var/www:rw"
-      - "html:/var/www/html:rw"
+      - "./assets/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "./assets/etc/nginx/includes:/etc/nginx/includes:ro"
+      - "./assets/run/php:/run/php:rw"
+      - "./assets/www-home:/var/www:rw"
+      - "./html:/var/www/html:rw"
   default-php:
     image: synst/php7
     container_name: docker4drupal-phpfpm
@@ -22,21 +22,21 @@ services:
     ports:
       - "2022:22"
     volumes:
-      - "assets/etc/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro"
-      - "assets/etc/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro"
-      - "assets/etc/php/php.ini:/etc/php/7.0/fpm/php.ini:ro"
-      - "assets/etc/php/mods-available/opcache.ini:/etc/php/7.0/mods-available/opcache.ini:ro"
-      - "assets/etc/start.sh:/start.sh:ro"
-      - "assets/etc/supervisor/supervisord.conf:/etc/supervisord.conf:ro"
-      - "assets/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro"
-      - "assets/etc/crontabs:/var/spool/cron/crontabs:rw"
-      - "assets/root/.ssh:/root/.ssh:ro"
-      - "assets/root/.bash_profile:/root/.bash_profile:rw"
-      - "assets/root/.bashrc:/root/.bashrc:rw"
-      - "assets/run/php:/run/php:rw"
-      - "assets/run/mysqld:/var/run/mysqld:rw"
-      - "assets/www-home:/var/www:rw"
-      - "html:/var/www/html:rw"
+      - "./assets/etc/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro"
+      - "./assets/etc/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro"
+      - "./assets/etc/php/php.ini:/etc/php/7.0/fpm/php.ini:ro"
+      - "./assets/etc/php/mods-available/opcache.ini:/etc/php/7.0/mods-available/opcache.ini:ro"
+      - "./assets/etc/start.sh:/start.sh:ro"
+      - "./assets/etc/supervisor/supervisord.conf:/etc/supervisord.conf:ro"
+      - "./assets/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro"
+      - "./assets/etc/crontabs:/var/spool/cron/crontabs:rw"
+      - "./assets/root/.ssh:/root/.ssh:ro"
+      - "./assets/root/.bash_profile:/root/.bash_profile:rw"
+      - "./assets/root/.bashrc:/root/.bashrc:rw"
+      - "./assets/run/php:/run/php:rw"
+      - "./assets/run/mysqld:/var/run/mysqld:rw"
+      - "./assets/www-home:/var/www:rw"
+      - "./html:/var/www/html:rw"
   default-mysql:
     image: mysql:5.6
     container_name: docker4drupal-mysql
@@ -49,6 +49,6 @@ services:
       - MYSQL_PASSWORD=drupal
       - MYSQL_ROOT_PASSWORD=MyDbRootPass
     volumes:
-    - "assets/etc/mysql/my.cnf:/etc/mysql/my.cnf"
-    - "assets/db:/var/lib/mysql"
-    - "assets/run/mysqld:/var/run/mysqld:rw"
+    - "./assets/etc/mysql/my.cnf:/etc/mysql/my.cnf"
+    - "./assets/db:/var/lib/mysql"
+    - "./assets/run/mysqld:/var/run/mysqld:rw"
