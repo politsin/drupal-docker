@@ -4,6 +4,16 @@
  * клонируем git clone https://github.com/politsin/docker4drupal && cd docker4drupal
  * запускаем docker-compose up -d
 
+## Первые шаги
+ * Сайт кладём в 'html', он будет доступен по адресу http://localhost:80
+ * Подключиться к базе drupal:drupal@localhost/drupal
+ * Авторизоваться в php-контейнер: ssh -p 2022 www-data@localhost, перед этим нужно записать свой паблик ключ в ./assets/www-home/.ssh/authorized_keys
+ 
+## Одновременно 2 проекта
+Проще всего разнести их по портам, для этого в файле docker-compose.yml:
+  * "80:80" меняем на "81:80" и смотрим на сайт по адресу http://localhost:81
+  * "2022:22" меняем на "2023:22" и авторизовываемся в контейнер через ssh по адресу 2023
+
 # Что где лежит
   * Друпал кладём в ./html
   * Конфигурация php/mysql тут: ./assets/etc
