@@ -1,4 +1,4 @@
-# Dru.io - drupal docker
+# Drupal docker
 
 ## Если у вас линукс и установленны docker и docker-compose
  * Устанавливаем docker и docker-compose https://docs.docker.com/install/linux/docker-ce/ubuntu/
