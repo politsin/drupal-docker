@@ -14,13 +14,13 @@ services:
       - "./assets/run/php:/run/php:rw"
       - "./assets/www-home:/var/www:rw"
       - "./site:/var/www/site:rw"
-  default-php:
+  php-fpm:
     image: synst/php7
     container_name: drupal-phpfpm
     hostname: drupal-phpfpm
     restart: always
     ports:
-      - "2022:22"
+      #- "2022:22"
     volumes:
       - "./assets/etc/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro"
       - "./assets/etc/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro"
@@ -37,7 +37,7 @@ services:
       - "./assets/run/mysqld:/var/run/mysqld:rw"
       - "./assets/www-home:/var/www:rw"
       - "./site:/var/www/site:rw"
-  default-mysql:
+  mysql:
     image: mysql:5.6
     container_name: drupal-mysql
     hostname: drupal-mysql
