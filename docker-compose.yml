@@ -13,7 +13,7 @@ services:
       - "./assets/etc/nginx/includes:/etc/nginx/includes:ro"
       - "./assets/run/php:/run/php:rw"
       - "./assets/www-home:/var/www:rw"
-      - "./html:/var/www/html:rw"
+      - "./site:/var/www/site:rw"
   default-php:
     image: synst/php7
     container_name: drupal-phpfpm
@@ -36,7 +36,7 @@ services:
       - "./assets/run/php:/run/php:rw"
       - "./assets/run/mysqld:/var/run/mysqld:rw"
       - "./assets/www-home:/var/www:rw"
-      - "./html:/var/www/html:rw"
+      - "./site:/var/www/site:rw"
   default-mysql:
     image: mysql:5.6
     container_name: drupal-mysql
