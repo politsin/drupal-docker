@@ -3,8 +3,8 @@ version: "2"
 services:
   nginx:
     image: synst/nginx
-    container_name: druio-nginx
-    hostname: druio-nginx
+    container_name: drupal-nginx
+    hostname: drupal-nginx
     restart: always
     ports:
       - "80:80"
@@ -16,8 +16,8 @@ services:
       - "./html:/var/www/html:rw"
   default-php:
     image: synst/php7
-    container_name: druio-phpfpm
-    hostname: druio-phpfpm
+    container_name: drupal-phpfpm
+    hostname: drupal-phpfpm
     restart: always
     ports:
       - "2022:22"
@@ -39,8 +39,8 @@ services:
       - "./html:/var/www/html:rw"
   default-mysql:
     image: mysql:5.6
-    container_name: druio-mysql
-    hostname: druio-mysql
+    container_name: drupal-mysql
+    hostname: drupal-mysql
     restart: always
     command: ["mysqld", "--character-set-server=utf8", "--collation-server=utf8_general_ci"]
     environment:
