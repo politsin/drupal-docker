@@ -1,4 +1,4 @@
-# docker4drupal
+# DruIO - docker
 
 ## Если у вас линукс и установленны docker и docker-compose
  * клонируем `git clone https://github.com/politsin/docker4drupal && cd docker4drupal`
