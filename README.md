@@ -1,6 +1,7 @@
 # Dru.io - drupal docker
 
 ## Если у вас линукс и установленны docker и docker-compose
+ * Устанавливаем docker и docker-compose https://docs.docker.com/install/linux/docker-ce/ubuntu/
  * клонируем `git clone https://github.com/politsin/druio-docker && cd druio-docker`
  * запускаем `docker-compose up -d`
 
