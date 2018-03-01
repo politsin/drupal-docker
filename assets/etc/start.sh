@@ -6,15 +6,19 @@ cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 # www-data user
 usermod -d /var/www/ www-data
 chsh -s /bin/bash www-data
+chown -Rf root:root /root/.ssh
 chown www-data:www-data /var/www/
 chown www-data:www-data /var/www/.bash_profile
 chown www-data:www-data /var/www/.bashrc
-chown -Rf www-data:www-data /var/www/site
 chown -Rf www-data:www-data /var/www/.drush
 chown -Rf www-data:www-data /var/www/.console
 chown -Rf www-data:www-data /var/www/.composer
 chown -Rf www-data:www-data /var/www/.ssh
-chown -Rf root:root /root/.ssh
+
+chown -Rf www-data:www-data /var/www/site
+chmod 775 /var/www/site
+find /var/www/site -type f | xargs chmod 664
+find /var/www/site -type d | xargs chmod 775
 
 chmod 600 /var/www/.ssh/authorized_keys
 
