@@ -12,9 +12,11 @@
 ## Первые шаги
  * Сайт будет доступен по адресу http://localhost:80
  * Подключиться к базе `drupal:drupal@localhost/drupal`
+
+## Решим вопросы с правами www-data
+ * sudo groupadd -r -g 33 www-data
+ * sudo usermod -a -G www-data $(id -un)
  
-
-
 # Что где лежит
   * файл index.php должен находится в `./site/web`
   * Конфигурация php/mysql тут: `./assets/etc`
