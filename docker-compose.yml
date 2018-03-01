@@ -19,8 +19,8 @@ services:
     container_name: drupal-phpfpm
     hostname: drupal-phpfpm
     restart: always
-    #ports:
-    #  - "2022:22"
+    ports:
+      - "2022:22"
     volumes:
       - "./assets/etc/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro"
       - "./assets/etc/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro"
