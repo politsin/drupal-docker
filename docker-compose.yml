@@ -22,10 +22,10 @@ services:
     #ports:
     #  - "2022:22"
     volumes:
-      - "./assets/etc/php/www.conf:/etc/php/7.0/fpm/pool.d/www.conf:ro"
-      - "./assets/etc/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf:ro"
-      - "./assets/etc/php/php.ini:/etc/php/7.0/fpm/php.ini:ro"
-      - "./assets/etc/php/mods-available/opcache.ini:/etc/php/7.0/mods-available/opcache.ini:ro"
+      - "./assets/etc/php/www.conf:/etc/php/7.1/fpm/pool.d/www.conf:ro"
+      - "./assets/etc/php/php-fpm.conf:/etc/php/7.1/fpm/php-fpm.conf:ro"
+      - "./assets/etc/php/php.ini:/etc/php/7.1/fpm/php.ini:ro"
+      - "./assets/etc/php/mods-available/opcache.ini:/etc/php/7.1/mods-available/opcache.ini:ro"
       - "./assets/etc/start.sh:/start.sh:ro"
       - "./assets/etc/supervisor/supervisord.conf:/etc/supervisord.conf:ro"
       - "./assets/etc/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro"
