@@ -14,8 +14,8 @@
  * Подключиться к базе `drupal:drupal@localhost/drupal`
 
 ## Решим вопросы с правами www-data
- * sudo groupadd -r -g 33 www-data
- * sudo usermod -a -G www-data $(id -un)
+ * `groupadd -r -g 33 www-data` - создаём группу www-data
+ * `usermod -a -G www-data $(id -un)` - добавляем себя в группу
  
 # Что где лежит
   * файл index.php должен находится в `./site/web`
